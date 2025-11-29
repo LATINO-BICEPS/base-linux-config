@@ -3,4 +3,5 @@
 - vim config
 - github auth
 - ssh keys
-- tmux conf
+- tmux conf (tbd)
+- bashrc (tbd)
