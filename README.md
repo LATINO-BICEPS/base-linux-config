@@ -1,7 +1,7 @@
 # basic-linux-config
 
-- vim config
+- vim 
 - github auth
 - ssh keys
-- tmux conf (tbd)
+- tmux 
 - bashrc (tbd)
