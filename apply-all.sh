@@ -1,3 +1,3 @@
 #!/bin/bash
 
-find . -maxdepth 1 -name "*.sh" -exec bash {} \;
+find scripts -maxdepth 1 -name "*.sh" -exec bash {} \;
