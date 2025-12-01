@@ -4,4 +4,4 @@
 - github auth
 - ssh keys
 - tmux 
-- bashrc (tbd)
+- bashrc

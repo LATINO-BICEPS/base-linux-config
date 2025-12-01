@@ -1,6 +1,7 @@
 #!/bin/bash
 # add my ssh pub keys and only allow pubkey auth
 
+# prompt for sudo 
 sudo -v
 
 echo "################################"
@@ -26,4 +27,4 @@ X11Forwarding no
 PrintMotd yes
 EOF
 
-sudo systemctl restart ssh
+sudo systemctl reload ssh
