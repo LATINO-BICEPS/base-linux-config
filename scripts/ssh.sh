@@ -4,18 +4,9 @@
 # prompt for sudo 
 sudo -v
 
-echo "################################"
-echo "Copying your GitHub public keys"
-echo "################################"
-echo
-
 mkdir -p ~/.ssh
 curl https://github.com/LATINO-BICEPS.keys > ~/.ssh/authorized_keys
-
-echo "################################"
-echo "Copying sshd config"
-echo "################################"
-echo
+echo "Copied GitHub public ssh keys"
 cat << 'EOF' | sudo tee /etc/ssh/sshd_config.d/sshd_config > /dev/null
 AcceptEnv LANG LC_*
 UsePAM no
@@ -27,4 +18,5 @@ X11Forwarding no
 PrintMotd yes
 EOF
 
+echo "Copied sshd config"
 sudo systemctl reload ssh

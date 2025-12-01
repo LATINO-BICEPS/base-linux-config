@@ -14,11 +14,10 @@ setw -g mode-key vi
 set -g base-index 1
 setw -g pane-base-index 1
 
-# enable mouse
-set -g mouse on
-
 # Pane splits should open to the same path as the current pane
 bind '"' split-window -v -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
-bind c new-window -c "#{pane_current_path}"
 
+# Enable bracketed paste
+set -g set-clipboard on
+set -as terminal-features ',*:clipboard'''

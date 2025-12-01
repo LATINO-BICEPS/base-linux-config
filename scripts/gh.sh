@@ -4,7 +4,9 @@ if [[ $(uname) == "Darwin" ]]; then
     if ! command -v brew; then
         echo "brew not installed - https://brew.sh/"
         exit 1
-    brew install gh git 
+    else
+        echo "Installing gh and git"
+        brew install gh git 
     fi
 else
     sudo apt install -y gh git
