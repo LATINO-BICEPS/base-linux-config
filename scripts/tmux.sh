@@ -1,6 +1,14 @@
 #!/bin/bash
 
-sudo apt install -y tmux
+if [[ $(uname) == "Darwin" ]]; then
+    if ! command -v brew; then
+        echo "brew not installed - https://brew.sh/"
+        exit 1
+    brew install tmux
+    fi
+else
+    sudo apt install -y tmux
+fi
 
 echo "######################################################"
 echo "Copying tmux config files to home dir"
