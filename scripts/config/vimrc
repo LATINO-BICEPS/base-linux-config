@@ -1,9 +1,16 @@
+" my preferences
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent 
 set background=dark
 syntax on
+
+" Remember position when reopening files
+if has("autocmd")
+  " When editing a file, always jump to the last cursor position
+  autocmd BufReadPost * if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
 
 " auto install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
