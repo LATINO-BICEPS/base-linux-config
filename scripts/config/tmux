@@ -21,3 +21,6 @@ bind % split-window -h -c "#{pane_current_path}"
 # Enable bracketed paste
 set -g set-clipboard on
 set -as terminal-features ',*:clipboard'''
+
+# enable mouse
+set -g mouse on
