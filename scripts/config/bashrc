@@ -30,7 +30,7 @@ if ! shopt -oq posix; then
 fi
 
 # limit path depth
-PROMPT_DIRTRIM=1
+PROMPT_DIRTRIM=2
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -44,10 +44,9 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
+# If this is an xterm or tmux set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+xterm*|rxvt*|tmux*)
     PS1="\[\e]0;\u@\h: \w\a\]$PS1"
     ;;
 *)

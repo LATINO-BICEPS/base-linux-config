@@ -24,3 +24,6 @@ set -as terminal-features ',*:clipboard'''
 
 # enable mouse
 set -g mouse on
+
+# display titles
+set-option -g set-titles on
