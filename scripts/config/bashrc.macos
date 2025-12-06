@@ -4,6 +4,9 @@ case $- in
       *) return;;
 esac
 
+# turn off bash autocomplete for hidden files
+bind 'set match-hidden-files off'
+
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
