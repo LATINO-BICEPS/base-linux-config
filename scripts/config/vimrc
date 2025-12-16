@@ -12,6 +12,20 @@ if has("autocmd")
   autocmd BufReadPost * if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
+" yank between different instances of vim
+set viminfo='100,<1000,s100,h,n~/.vim/viminfo
+
+augroup sync_clipboard
+  autocmd!
+  autocmd TextYankPost * silent! wviminfo
+  "autocmd CursorMoved * silent! rviminfo
+  " Load before EVERY paste
+  nnoremap p :rviminfo<CR>p
+  nnoremap P :rviminfo<CR>P
+  vnoremap p :rviminfo<CR>p
+  vnoremap P :rviminfo<CR>P
+augroup END
+
 " auto install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
