@@ -6,6 +6,9 @@ set autoindent
 set background=dark
 syntax on
 
+" :W to save with sudo if forgot to open with it
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 " Remember position when reopening files
 if has("autocmd")
   " When editing a file, always jump to the last cursor position
