@@ -21,12 +21,11 @@ set viminfo='100,<1000,s100,h,n~/.vim/viminfo
 augroup sync_clipboard
   autocmd!
   autocmd TextYankPost * silent! wviminfo
-  "autocmd CursorMoved * silent! rviminfo
-  " Load before EVERY paste
-  nnoremap p :rviminfo<CR>p
-  nnoremap P :rviminfo<CR>P
-  vnoremap p :rviminfo<CR>p
-  vnoremap P :rviminfo<CR>P
+  " Only sync for unnamed register (default p/P)
+  nnoremap <Leader>p :rviminfo<CR>p
+  nnoremap <Leader>P :rviminfo<CR>P
+  vnoremap <Leader>p :rviminfo<CR>p
+  vnoremap <Leader>P :rviminfo<CR>P 
 augroup END
 
 " auto install vim-plug
