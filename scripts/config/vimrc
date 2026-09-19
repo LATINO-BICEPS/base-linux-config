@@ -1,12 +1,10 @@
 " my preferences
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent 
+set tabstop=2
+set shiftwidth=2
+set expandtab " tabs -> spaces
 set background=dark
+set autoindent
 syntax on
-set laststatus=2
-set statusline=%F
 
 " :W to save with sudo if forgot to open with it
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
@@ -30,17 +28,3 @@ augroup sync_clipboard
   vnoremap p :rviminfo<CR>p
   vnoremap P :rviminfo<CR>P
 augroup END
-
-
-" auto install vim-plug
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin('~/.vim/plugged')
-
-Plug 'jiangmiao/auto-pairs' 
-
-call plug#end()
