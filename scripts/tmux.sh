@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -euo pipefail
+sudo -v
+
 if [[ $(uname) == "Darwin" ]]; then
     if ! command -v brew; then
         echo "brew not installed - https://brew.sh/"
