@@ -27,3 +27,7 @@ set -g mouse on
 
 # display titles
 set-option -g set-titles on
+
+# stop jumping back when highlighting with the mouse
+# https://github.com/tmux/tmux/issues/140#issuecomment-321144647
+unbind -T copy-mode-vi MouseDragEnd1Pane
