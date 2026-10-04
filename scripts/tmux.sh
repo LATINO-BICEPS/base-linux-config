@@ -3,6 +3,25 @@
 set -euo pipefail
 sudo -v
 
+# https://askubuntu.com/questions/551378/is-there-any-default-function-utility-to-prompt-the-user-for-yes-no-in-a-bash-sc
+check_yes_no(){
+    while true; do
+        read -p "$1" yn
+        if [ "$yn" = "" ]; then
+            yn='Y'
+        fi
+        case "$yn" in
+            [Yy])
+                break;;
+            [Nn])
+                echo "Aborting..."
+                exit 1;;
+            *)
+                echo "Please answer y or n for yes or no.";;
+        esac
+    done;
+}
+
 if [[ $(uname) == "Darwin" ]]; then
     if ! command -v brew; then
         echo "brew not installed - https://brew.sh/"
@@ -17,13 +36,20 @@ elif command -v pacman &>/dev/null; then
     sudo pacman -S --needed --noconfirm tmux
 fi
 
-# save previous tmux config if it exists 
-[ -f "$HOME/.tmux.conf" ] && cp ~/.tmux.conf ~/.tmux.conf.bak
-echo "Backup of original config is saved to $HOME/.tmux.conf.bak"
+NEW="./config/tmux"
+OLD="$HOME/.tmux.conf"
 
-cp ./config/tmux ~/.tmux.conf
-echo "Copied tmux config to $HOME/.tmux.conf"
+if [[ -e "$OLD" ]]; then
+  if diff --color "$OLD" "$NEW"; then
+    echo "There are no differences in your tmux config."
+    exit 0
+  fi
+  check_yes_no "Do you want to replace your current config with the following? [Y/n] "
+  cp "$NEW" "$OLD" 
+  echo "Copied tmux.conf to $OLD"
+fi
 
+# automatically tmux on SSH
 # check if shell is bash/fish
 if [[ $(basename $SHELL) == "bash" ]]; then
     # check if ssh_tmux entry already exists in bashrc 
